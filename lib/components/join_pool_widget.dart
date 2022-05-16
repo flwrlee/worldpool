@@ -1,0 +1,187 @@
+import '../flutter_flow/flutter_flow_icon_button.dart';
+import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:easy_debounce/easy_debounce.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class JoinPoolWidget extends StatefulWidget {
+  const JoinPoolWidget({Key key}) : super(key: key);
+
+  @override
+  _JoinPoolWidgetState createState() => _JoinPoolWidgetState();
+}
+
+class _JoinPoolWidgetState extends State<JoinPoolWidget> {
+  TextEditingController textController;
+
+  @override
+  void initState() {
+    super.initState();
+    textController = TextEditingController();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration: BoxDecoration(
+        color: Color(0xFFEEEEEE),
+      ),
+      child: Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 30,
+                  borderWidth: 1,
+                  buttonSize: 60,
+                  icon: Icon(
+                    Icons.arrow_back_rounded,
+                    color: Colors.black,
+                    size: 30,
+                  ),
+                  onPressed: () async {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                  child: Text(
+                    'Join Trust for Public Land',
+                    style: FlutterFlowTheme.of(context).title3,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Text(
+                  'Amount to be staked:',
+                  textAlign: TextAlign.center,
+                  style: FlutterFlowTheme.of(context).bodyText1,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                    child: TextFormField(
+                      controller: textController,
+                      onChanged: (_) => EasyDebounce.debounce(
+                        'textController',
+                        Duration(milliseconds: 2000),
+                        () => setState(() {}),
+                      ),
+                      autofocus: true,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        hintText: 'Enter the amount in ETH',
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            width: 1,
+                          ),
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(4.0),
+                            topRight: Radius.circular(4.0),
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            width: 1,
+                          ),
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(4.0),
+                            topRight: Radius.circular(4.0),
+                          ),
+                        ),
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyText1,
+                      textAlign: TextAlign.start,
+                      keyboardType: TextInputType.number,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
+                  child: Text(
+                    'MINIMUM STAKE: 5 ETH',
+                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                          fontFamily: 'Lato',
+                          color: Color(0xFF3E3EC0),
+                        ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                    child: Text(
+                      'By joining you agree to the terms and conditions. Please see settings for more information.',
+                      textAlign: TextAlign.start,
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Lato',
+                            color: FlutterFlowTheme.of(context).primaryText,
+                          ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            FFButtonWidget(
+              onPressed: () {
+                print('Button pressed ...');
+              },
+              text: 'JOIN',
+              options: FFButtonOptions(
+                width: 130,
+                height: 40,
+                color: Color(0xFFEEEEEE),
+                textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                      fontFamily: 'Lato',
+                      color: FlutterFlowTheme.of(context).primaryText,
+                    ),
+                elevation: 5,
+                borderSide: BorderSide(
+                  color: Colors.transparent,
+                  width: 1,
+                ),
+                borderRadius: 12,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
